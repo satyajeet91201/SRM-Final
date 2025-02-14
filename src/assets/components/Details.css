@@ -1,0 +1,344 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Outfit:wght@100..900&family=Playwrite+VN:wght@100..400&display=swap');
+
+.outer-container{
+  display: flex;
+  justify-content: center;
+}
+
+
+.center {
+  padding: 1rem;
+  width: 100%;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+  max-width: 750px;
+  border-radius: 25px;
+  box-shadow: 0 5px 10px rgba(3, 3, 2, 1.8);
+  overflow: hidden; /* Prevent overflow */
+}
+  
+  .header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    position: relative;
+  }
+  
+  .back-button {
+    font-size: 1.5rem;
+    color: #666;
+    text-decoration: none;
+    position: absolute;
+    left: 0;
+  }
+  
+  .header h1 {
+    flex: 1;
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+  
+  .profile-section {
+    margin-bottom: 2rem;
+  }
+  
+  .profile-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Align items to the start of the container */
+    margin-bottom: 1px;
+  }
+  
+  .profile-image-container {
+    position: relative;
+    width: 126px;
+    height: 126px;
+  }
+  
+  .profile-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 4px solid #0eaa09;
+    object-fit: cover;
+  }
+  
+  .profile-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-top: 0.5rem;
+    margin-left: 16px;
+    white-space: nowrap; /* Prevents wrapping */
+  }
+  
+  .profile-tag {
+    color: #666;
+    font-size: 0.875rem;
+    display: flex;
+    margin-top: -9px;
+    margin-left: -29px;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  
+  .status-dot {
+    width: 12px;
+    margin-left: 25px;
+    height: 12px;
+    border-radius: 50%;
+  }
+  
+  .special-days {
+    background: #F0F2F5;
+    align-items: left;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-right: 1 rem;
+    width: 190px;
+    box-shadow: 0 5px 10px rgba(3, 3, 2, 1.8); /* Subtle shadow */
+  }
+  
+  .special-days h2 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    white-space: nowrap;
+  }
+  
+  .special-day {
+    display: flex;
+    align-items: left;
+    gap: 0.8rem;
+    margin-left: 0.5px;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    font-size: 0.900rem;
+  }
+  
+  .preferences-grid {
+    display: grid;
+    margin-top: 80px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .preference-card {
+    background: #F0F2F5;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 5px 10px rgba(3, 3, 2, 1.8) /* Subtle shadow */
+  }
+  
+  .preference-card h2 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .preference-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 5px;
+    font-size: 0.5 rem;
+    font-weight: 500;
+    white-space: nowrap;
+    margin-bottom: 0.5rem;
+  }
+  
+  .cuisines-section, .dishes-section {
+    margin-bottom: 1.5rem;
+    background-color: #F0F2F5;
+    box-shadow: 0 5px 10px rgba(3, 3, 2, 1.8); /* Subtle shadow */
+
+  }
+  
+  .section-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    white-space: nowrap;
+    margin-bottom: 1rem;
+  }
+  
+  .cuisines-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
+  }
+  
+  .cuisine-card {
+    position: relative;
+    aspect-ratio: 1;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  }
+  
+  .cuisine-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .cuisine-label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 0.25rem;
+    font-size: 0.75rem;
+    text-align: center;
+  }
+  
+  .cuisine-tags {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .cuisine-tag {
+    background: #dbeafe;
+    color: #2563eb;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+  }
+  
+  .dishes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+  }
+  .cuisines-section {
+    margin-bottom: 1.5rem;
+    background-color: rgb(201, 196, 196);
+    box-shadow: 0 5px 10px rgba(3, 3, 2, 1.8); /* Subtle shadow */
+    width: calc(100% + 1rem); /* Increase width slightly */
+    margin-left: -0.5rem; /* Adjust the left margin to counteract the added width */
+    margin-right: -0.5rem; /* Adjust the right margin to maintain symmetry */
+    border-radius: 0.5rem;
+    overflow: auto;
+    display: flex;
+    padding: 1rem;
+  }
+  
+  .preference-card h2{
+    white-space: nowrap;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+  
+  
+  .cuisines-section, .dishes-section {
+    margin-bottom: 1.5rem;
+    background-color: #F0F2F5;
+    box-shadow: 0 5px 10px rgba(3, 3, 2, 1.8); /* Subtle shadow */
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-left: 0.15rem;
+    width: 100%; /* Ensure it stays within the container width */
+  }
+  
+  .cuisines-grid, .dishes-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* You may adjust this to `3` or `2` depending on how many items you want per row */
+    gap: 0.75rem;
+    overflow: hidden; /* To avoid overflow from grid items */
+  }
+  
+  .cuisine-card, .cuisine-card img {
+    width: 100%; /* Ensures the images take full width inside the grid */
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .cuisine-card {
+    position: relative;
+    aspect-ratio: 1; /* Ensures all cards are square */
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 5px 10px rgba(3, 3, 2, 1.8); /* Subtle shadow */
+  }
+  
+  .cuisines-section, .dishes-section {
+    margin-bottom: 1.5rem;
+    background-color: #F0F2F5;
+    box-shadow: 0 5px 10px rgba(3, 3, 2, 1.8); /* Subtle shadow */
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-left: 0.15rem;
+    width: 100%;
+  }
+  
+  .section-title-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+  
+  .section-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 0; /* Remove margin to avoid extra space */
+    margin-bottom: 1rem;
+  }
+  
+  .cuisines-grid {
+    display: flex;
+    overflow-x: auto;
+    text-align: center;
+    gap: 0.75rem;
+  }
+
+  .cuisines-section::-webkit-scrollbar{
+    width: 0px;
+  }
+  
+  .cuisine-card {
+    position: relative;
+    max-height: 120px;
+    max-width: 120px;
+    min-width: 120px;
+    aspect-ratio: 1; /* Ensures all cards are square */
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 5px 10px rgba(3, 3, 2, 1.8); /* Subtle shadow */
+  }
+  
+  .cuisine-card img {
+    width: 100%; /* Ensures the images take full width inside the grid */
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .cuisine-label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 0.25rem;
+    font-size: 0.75rem;
+    text-align: center;
+  }
+
+  
+  
+  @media (max-width: 768px) {
+    .preferences-grid, .cuisines-grid {
+      grid-template-columns: repeat(2, 1fr); /* 2 items per row on smaller screens */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .preferences-grid, .cuisines-grid {
+      grid-template-columns: 1fr; /* 1 item per row on very small screens */
+    }
+  }
+  

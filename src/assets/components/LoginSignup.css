@@ -1,0 +1,205 @@
+/* General reset */
+* {
+  padding: 0;
+  margin: 0;
+  color: #162353;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  min-height: 100%;
+  background: linear-gradient(45deg, #2b2828, #373e3f);
+  font-size: 16px;
+}
+
+h1 {
+  font-size: 28px;
+  letter-spacing: -1px;
+  color: #fff;
+}
+
+a {
+  text-decoration: none;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  position: relative;
+}
+
+.login-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('background.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.15;
+  z-index: 0;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 600px;
+  width: 100%;
+  z-index: 1;
+}
+
+.form-content {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+}
+
+.brand-title {
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 36px;
+}
+
+.form-header {
+  font-size: 18px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 500;
+  color: #333;
+}
+
+.input-field {
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.input-field label {
+  font-size: 14px;
+  color: #333;
+}
+
+.input-field input {
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-top: 5px;
+  outline: none;
+}
+
+.password-field {
+  display: flex;
+  justify-content: space-between;
+}
+
+.forgot-password {
+  font-size: 14px;
+  color: #00bcd4;
+  font-weight: 500;
+}
+
+.checkbox-field {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.checkbox-field input {
+  margin-right: 8px;
+}
+
+.submit-btn {
+  background-color: #00bcd4;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 12px;
+  width: 100%;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #00796b;
+}
+
+.sso-link {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.sso-link a {
+  color: #00bcd4;
+  font-weight: 600;
+}
+
+.footer {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.footer span {
+  font-size: 14px;
+  color: #333;
+}
+
+.footer-links {
+  margin-top: 10px;
+}
+
+.footer-links a {
+  margin: 0 10px;
+  color: #697386;
+  font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .login-container {
+    padding: 20px 15px;
+  }
+
+  .form-content {
+    padding: 20px;
+  }
+
+  .brand-title {
+    font-size: 30px;
+  }
+
+  .form-header {
+    font-size: 16px;
+  }
+
+  .input-field input {
+    font-size: 14px;
+  }
+
+  .submit-btn {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .footer span {
+    font-size: 12px;
+  }
+
+  .footer-links a {
+    font-size: 12px;
+  }
+}

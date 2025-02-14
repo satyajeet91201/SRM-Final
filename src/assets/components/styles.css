@@ -1,0 +1,250 @@
+/* Main Container Styles */
+.profile-container {
+    background-color: #f8f9fa;
+    min-height: 100vh;
+  }
+  
+  /* Card Styles */
+  .card {
+    border: none !important;
+    border-radius: 12px !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    background: white;
+  }
+  
+  /* Profile Header */
+  .profile-header {
+    padding: 1.5rem;
+  }
+  
+  .profile-image {
+    width: 80px !important;
+    height: 80px !important;
+    border-radius: 50% !important;
+    object-fit: cover;
+    border: 3px solid white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .profile-header h2 {
+    color: #2d3748;
+    margin-bottom: 0.25rem;
+    font-size: 1.5rem;
+  }
+  
+  .profile-header p {
+    color: #e53e3e;
+    margin: 0;
+    font-size: 0.875rem;
+  }
+  
+  /* Section Titles */
+  .section-title {
+    color: #2d3748;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  
+  /* Special Days */
+  .special-days {
+    background-color: #fff5f5 !important;
+  }
+  
+  .special-days-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .special-day-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+  }
+  
+  .calendar-icon {
+    color: #3182ce;
+  }
+  
+  .calendar-icon.red {
+    color: #e53e3e;
+  }
+  
+  /* Features Section */
+  .feature-card {
+    height: 100%;
+  }
+  
+  .features-list {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .feature-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+  }
+  
+  .feature-icon {
+    width: 20px;
+    height: 20px;
+  }
+  
+  /* Instructions List */
+  .instructions-list {
+    list-style-type: disc;
+    padding-left: 1.25rem;
+    margin: 0;
+    font-size: 0.875rem;
+    color: #4a5568;
+  }
+  
+  /* Cuisines Grid */
+  .cuisine-grid, .dishes-grid {
+    margin: 0 -0.5rem;
+  }
+  
+  .cuisine-item, .dish-item {
+    padding: 0.5rem;
+  }
+  
+  .cuisine-image, .dish-image {
+    aspect-ratio: 1;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+  }
+  
+  .cuisine-image img, .dish-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .cuisine-name, .dish-name {
+    text-align: center;
+    font-size: 0.875rem;
+    color: #4a5568;
+    margin: 0;
+  }
+  
+  .cuisine-tag {
+    color: #3182ce;
+    font-size: 0.875rem;
+  }
+  
+  /* Order History */
+  .order-tabs .nav-tabs {
+    border: none;
+    background-color: #f7fafc;
+    border-radius: 8px;
+    padding: 0.25rem;
+    margin-bottom: 1rem;
+  }
+  
+  .order-tabs .nav-link {
+    border: none;
+    border-radius: 6px;
+    color: #4a5568;
+    padding: 0.5rem 1rem;
+  }
+  
+  .order-tabs .nav-link.active {
+    background-color: white;
+    color: #3182ce;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .order-section {
+    margin-bottom: 2rem;
+  }
+  
+  .order-section-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #2d3748;
+  }
+  
+  .order-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid #edf2f7;
+  }
+  
+  .order-item:last-child {
+    border-bottom: none;
+  }
+  
+  .order-image {
+    width: 64px;
+    height: 64px;
+    border-radius: 8px;
+    object-fit: cover;
+    margin-right: 1rem;
+  }
+  
+  .order-details h6 {
+    margin: 0;
+    color: #2d3748;
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+  
+  .order-note {
+    display: block;
+    color: #718096;
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+  }
+  
+  .order-price {
+    color: #2d3748;
+    font-weight: 500;
+    font-size: 0.875rem;
+  }
+  
+  /* View All Button */
+  .view-all-btn {
+    color: #3182ce !important;
+    padding: 0 !important;
+    font-size: 0.875rem;
+    text-decoration: none !important;
+  }
+  
+  .view-all-btn:hover {
+    color: #2c5282 !important;
+  }
+  
+  .rotate-180 {
+    transform: rotate(180deg);
+    transition: transform 0.2s ease;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .profile-image {
+      width: 60px !important;
+      height: 60px !important;
+    }
+    
+    .features-list {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    
+    .cuisine-grid, .dishes-grid {
+      margin: 0 -0.25rem;
+    }
+    
+    .cuisine-item, .dish-item {
+      padding: 0.25rem;
+    }
+  }
+  
+  

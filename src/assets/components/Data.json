@@ -1,0 +1,30 @@
+{
+    "newCustomer": [
+      {
+        "id": "1",
+        "name": "Customer1",
+        "image": "https://t3.ftcdn.net/jpg/09/65/12/42/240_F_965124248_SameVz1WWdnpb93FUtYkk0Le0FnF9Xbq.jpg"
+      },
+      {
+        "id": "2",
+        "name": "Customer2",
+        "image": "https://t3.ftcdn.net/jpg/06/83/01/76/240_F_683017631_A7umhKANBhi3f652bpLobkCE6w1zMvhi.jpg"
+      },
+      {
+        "id": "3",
+        "name": "Customer3",
+        "image": "https://easy-peasy.ai/cdn-cgi/image/quality=80,format=auto,width=700/https://fdczvxmwwjwpwbeeqcth.supabase.co/storage/v1/object/public/images/d664ddb1-a0c9-41cb-8ad7-53e323e5502d/e9df037a-8347-417b-af5c-0332420122df.png"
+      },
+      {
+        "id": "4",
+        "name": "Customer4",
+        "image": "https://media.istockphoto.com/id/1399395748/photo/cheerful-business-woman-with-glasses-posing-with-her-hands-under-her-face-showing-her-smile.jpg?s=612x612&w=0&k=20&c=EbnuxLE-RJP9a08h2zjfgKUSFqmjGubk0p6zwJHnbrI="
+      },
+      {
+        "id": "5",
+        "name": "Customer5",
+        "image": "https://media.istockphoto.com/id/1309328823/photo/headshot-portrait-of-smiling-male-employee-in-office.jpg?s=612x612&w=0&k=20&c=kPvoBm6qCYzQXMAn9JUtqLREXe9-PlZyMl9i-ibaVuY="
+      }
+    ]
+  }
+  

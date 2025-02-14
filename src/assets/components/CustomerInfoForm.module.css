@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Outfit:wght@100..900&family=Playwrite+VN:wght@100..400&display=swap');
+
+
+.container {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.formContainer {
+  background-color: #ffffff; /* Clean white background */
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 1.0);
+  width: 100%;
+  max-width: 750px;
+}
+
+.heading {
+  color: #34046b; /* Violet color for heading */
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.formGroup {
+  margin-bottom: 20px;
+}
+
+.formLabel {
+  font-weight: bold;
+  color: #333;
+}
+
+.formControl {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.formControl:focus {
+  border-color: #5b2c90;
+  outline: none;
+}
+
+.inputGroup {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.addDishButton {
+  background-color: #5b2c90;
+  color: white;
+  font-weight: bold;
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-left: 10px;
+}
+
+.addDishButton:hover {
+  background-color: #4a1d72;
+}
+
+.dishList {
+  padding-left: 0;
+  list-style-type: none;
+}
+
+.submitButton {
+  background-color: #5b2c90;
+  color: white;
+  font-weight: bold;
+  width: 100%;
+  padding: 15px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submitButton:hover {
+  background-color: #4a1d72;
+}
+
+.listItem {
+  background-color: #f1f1f1;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.listItem:hover {
+  background-color: #e0e0e0;
+}
+ /* More */
+
+ /* Add this style for the remove button */
+.removeButton {
+  background-color: #ab03df; /* Red color to make it look like a 'delete' button */
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  font-size: 14px; /* Slightly smaller font than the "Add" button */
+  cursor: pointer;
+  border-radius: 4px;
+  margin-left: 10px; /* Space between text and button */
+  transition: background-color 0.3s ease;
+}
+
+/* Hover effect for remove button */
+.removeButton:hover {
+  background-color: #d32f2f;
+}
+
+/* To align the remove button to the right */
+.dishListItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 1rem;
+}
+
+.dishListItem span {
+  flex-grow: 1;
+  padding-right: 10px;
+}
+
+.inputGroup {
+  display: flex;
+  align-items: center;
+}
+
+/* Styling for input group in special instructions */
+.inputGroup input {
+  margin-right: 10px;
+}
