@@ -3,7 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { useAppContext } from '../../context/AppContext';
 import Card2 from './Card2';
-import Details from './Details';
+import Profile from './Profile';
 
 const LiveRecognition = ({ state, setState }) => {
 
