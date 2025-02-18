@@ -3,7 +3,7 @@ import './App.css';
 import './assets/components/authentication.css';
 import Navbar from './assets/components/Navbar';
 import LiveRecognition from './assets/components/LiveRecognition';
-import Details from './assets/components/Details';
+import Details from './assets/components/Profile';
 import Loading from './assets/components/Loading';
 import Login from './assets/components/Login';
 import Registration from './assets/components/Registration';
@@ -74,7 +74,7 @@ function App() {
             <Route 
               path="/details" 
               element={
-                <Details 
+                <Profile 
                   customer={selectedCustomer} 
                   onClose={() => setState('Card2')} 
                 />
