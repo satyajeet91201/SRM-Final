@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import CustomerDetails from './CustomerDetails';
-import './Details.css';
+import './Profile.css';
 import { useNavigate } from 'react-router-dom';
 import { IoChevronBackCircleSharp } from "react-icons/io5";
 
 
-const Details = ({ onClose }) => {
+const Profile = ({ onClose }) => {
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -207,4 +207,4 @@ const Details = ({ onClose }) => {
   );
 };
 
-export default Details;
+export default Profile;
