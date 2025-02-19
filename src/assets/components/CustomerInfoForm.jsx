@@ -13,7 +13,7 @@ const CustomerInfoForm = () => {
     mobileNumber: '',
     vegOrNonVeg: '',
     cuisine: '',
-    specialOccasion: '',
+    specialOccasion: [],
     specialOccasionDate: '',
     anniversaryDate: '',
     assistance: '',
@@ -34,9 +34,7 @@ const CustomerInfoForm = () => {
         image: customer.image || '',
         vegOrNonVeg: customer.vegOrNonVeg || '',
         cuisine: '',
-        specialOccasion: customer.specialOccasion?.type || '',
-        specialOccasionDate: customer.specialOccasion?.birthdayDate || '',
-        anniversaryDate: customer.specialOccasion?.anniversaryDate || '',
+        specialOccasion: Array.isArray(customer.specialOccasion) ? customer.specialOccasion : [],
         assistance: '',
         favoriteDishes: customer.favoriteDishes || [],
         specialInstructions: customer.specialInstructions || [],
@@ -45,54 +43,35 @@ const CustomerInfoForm = () => {
       });
     }
   }, [customer]);
+  
 
-  const handleFormSubmission = (e) => {
+  const { submitNewCustomer } = useAppContext();  
+
+  const handleFormSubmission = async (e) => {
     e.preventDefault();
     const newCustomer = {
-      id: Date.now(),
+      id: customer.id,  // ✅ Keep original ID
       name: formData.customerName,
       image: formData.image,
       mobileNumber: formData.mobileNumber,
       vegOrNonVeg: formData.vegOrNonVeg,
       orders: [],
-      specialOccasion: {
-        type: formData.specialOccasion,
-        birthdayDate: formData.specialOccasion === 'Both' ? formData.specialOccasionDate : '',
-        anniversaryDate: formData.specialOccasion === 'Both' ? formData.anniversaryDate : ''
-      },
+      specialOccasion: formData.specialOccasion.length ? formData.specialOccasion : [],
       assistance: formData.assistance,
       specialAssistanceOption: formData.specialAssistanceOption,
       favoriteDishes: formData.favoriteDishes,
       specialInstructions: formData.specialInstructions,
       color: 'green'
     };
-    addCustomerToRecognized(newCustomer);
-    removeCustomerFromNew(customer.id);
-    
-    setTimeout(() => {
-      newCustomer.color = 'red';
-    }, 10000);
-
-    setFormData({
-      customerName: '',
-      image: '',
-      mobileNumber: '',
-      vegOrNonVeg: '',
-      cuisine: '',
-      specialOccasion: '',
-      specialOccasionDate: '',
-      anniversaryDate: '',
-      assistance: '',
-      specialAssistanceOption: '',
-      favoriteDishes: [],
-      specialInstructions: [],
-      customInstructions: ''
-    });
-    setNewDish('');
-    navigate('/');
+  
+    try {
+      await submitNewCustomer(newCustomer);  // ✅ Now updates both "recognized" & "new"
+      navigate('/');
+    } catch (error) {
+      console.error("Error submitting customer:", error);
+    }
   };
-
-
+  
   const handleVegOrNonVegChange = (e) => {
     setFormData({
       ...formData,
@@ -115,19 +94,20 @@ const CustomerInfoForm = () => {
     setNewDish(e.target.value);
   };
 
-  const handleSpecialOccasionChange = (e, occasion) => {
-    if (occasion === 'Both') {
-      setFormData({
-        ...formData,
-        specialOccasion: 'Both',
-      });
-    } else if (occasion === 'Birthday' || occasion === 'Anniversary') {
-      setFormData({
-        ...formData,
-        specialOccasion: occasion,
-      });
-    }
+  const handleSpecialOccasionChange = (type, date) => {
+    setFormData((prev) => {
+      let updatedOccasions = prev.specialOccasion.filter((item) => item.type !== type);
+  
+      // If a date is provided (checkbox checked), add or update the occasion
+      if (date !== null) {
+        updatedOccasions.push({ type, date });
+      }
+  
+      // Ensure only a max of 2 occasions
+      return { ...prev, specialOccasion: updatedOccasions.slice(0, 2) };
+    });
   };
+  
 
 
   const handleCustomInstructionsChange = (e) => {
@@ -178,7 +158,9 @@ const CustomerInfoForm = () => {
     <div className={styles.container}>
       <form className={styles.formContainer} onSubmit={handleFormSubmission}>
         <h3 className={styles.heading} style={{fontFamily:"kanit"}}><b>FORM</b></h3>
-
+        <div className={styles.formcustomerimgcontainer}>
+        <img src={customer.image} className={styles.formcustomerimg}></img>
+        </div>
         {/* Customer Name */}
         <div className={styles.formGroup}>
           <label htmlFor="customerName" className={styles.formLabel}>Customer Name</label>
@@ -255,68 +237,53 @@ const CustomerInfoForm = () => {
           </select>
         </div>
 
-        {/* Special Occasion */}
-        <div className={styles.formGroup}>
-          <label className={styles.formLabel}>Special Occasion</label>
-          <div className="form-check">
-            <input
-              className="form-check-input"
-              type="checkbox"
-              id="birthday"
-              checked={formData.specialOccasion === 'Birthday'}
-              onChange={() => handleSpecialOccasionChange(null, 'Birthday')}
-            />
-            <label className="form-check-label" htmlFor="birthday">Birthday</label>
-          </div>
-          <div className="form-check">
-            <input
-              className="form-check-input"
-              type="checkbox"
-              id="anniversary"
-              checked={formData.specialOccasion === 'Anniversary'}
-              onChange={() => handleSpecialOccasionChange(null, 'Anniversary')}
-            />
-            <label className="form-check-label" htmlFor="anniversary">Anniversary</label>
-          </div>
-          <div className="form-check">
-            <input
-              className="form-check-input"
-              type="checkbox"
-              id="both"
-              checked={formData.specialOccasion === 'Both'}
-              onChange={() => handleSpecialOccasionChange(null, 'Both')}
-            />
-            <label className="form-check-label" htmlFor="both">Both</label>
-          </div>
-        </div>
+    {/* Special Occasion */}
+    <div className={styles.formGroup}>
+      <label className={styles.formLabel}>Special Occasion</label>
+      
+      <div className="form-check">
+        <input
+          className="form-check-input"
+          type="checkbox"
+          id="birthday"
+          checked={formData.specialOccasion?.some((item) => item.type === "Birthday") || false}
+          onChange={(e) =>
+            handleSpecialOccasionChange("Birthday", e.target.checked ? "" : null)
+          }
+        />
+        <label className="form-check-label" htmlFor="birthday">Birthday</label>
+      </div>
 
-        {/* Special Occasion Date (Birthday) */}
-        {(formData.specialOccasion === 'Birthday' || formData.specialOccasion === 'Both') && (
-          <div className={styles.formGroup}>
-            <label htmlFor="occasionDate" className={styles.formLabel}>Birthday Date</label>
-            <input
-              type="date"
-              className={styles.formControl}
-              id="occasionDate"
-              value={formData.specialOccasionDate}
-              onChange={(e) => setFormData({ ...formData, specialOccasionDate: e.target.value })}
-            />
-          </div>
-        )}
+      <div className="form-check">
+        <input
+          className="form-check-input"
+          type="checkbox"
+          id="anniversary"
+          checked={formData.specialOccasion.some((item) => item.type === "Anniversary")}
+          onChange={(e) =>
+            handleSpecialOccasionChange("Anniversary", e.target.checked ? "" : null)
+          }
+        />
+        <label className="form-check-label" htmlFor="anniversary">Anniversary</label>
+      </div>
+    </div>
 
-        {/* Special Occasion Date (Anniversary) */}
-        {(formData.specialOccasion === 'Anniversary' || formData.specialOccasion === 'Both') && (
-          <div className={styles.formGroup}>
-            <label htmlFor="anniversaryDate" className={styles.formLabel}>Anniversary Date</label>
-            <input
-              type="date"
-              className={styles.formControl}
-              id="anniversaryDate"
-              value={formData.anniversaryDate}
-              onChange={(e) => setFormData({ ...formData, anniversaryDate: e.target.value })}
-            />
-          </div>
-        )}
+    {/* Special Occasion Date Inputs */}
+    {formData.specialOccasion.map((occasion, index) => (
+      <div key={index} className={styles.formGroup}>
+        <label htmlFor={`${occasion.type.toLowerCase()}Date`} className={styles.formLabel}>
+          {occasion.type} Date
+        </label>
+        <input
+          type="date"
+          className={styles.formControl}
+          id={`${occasion.type.toLowerCase()}Date`}
+          value={occasion.date || ""}
+          onChange={(e) => handleSpecialOccasionChange(occasion.type, e.target.value)}
+        />
+      </div>
+    ))}
+
 
         {/* Special Assistance */}
         <div className={styles.formGroup}>
@@ -438,7 +405,7 @@ const CustomerInfoForm = () => {
           <select
             className={styles.formControl}
             value={formData.seatingPreference}
-            onChange={handleSeatingPreferenceChange}
+            onChange={()=>handleSeatingPreferenceChange(e.target.value)}
           >
             <option value="Window">Window Seating</option>
             <option value="Balcony Seating">Balcony Seating</option>
