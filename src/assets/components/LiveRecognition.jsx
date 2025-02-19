@@ -3,6 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { useAppContext } from '../../context/AppContext';
 import Card2 from './Card2';
+import axios from 'axios';
 import Profile from './Profile';
 
 const LiveRecognition = ({ state, setState }) => {
@@ -51,25 +52,7 @@ const LiveRecognition = ({ state, setState }) => {
     console.log('Navigating to details with customer:', customer); // Debugging line
     navigate('/details', { state: { customer } });
   };
-
-  const getBorderColor = (customerId) => {
-    const addedTime = customerAddTimes[customerId];
   
-    if (!addedTime) return 'green'; // Default border color
-  
-    const elapsedTime = Date.now() - addedTime;
-  
-    if (elapsedTime < 5000) {
-      return 'transparent'; // No border for the first 5 seconds
-    } else if (elapsedTime >= 5000 && elapsedTime <= 60000) {
-      return 'green'; // Turns green after 5 seconds
-    } else {
-      return 'red'; // Turns red after 1 minute
-    }
-  };
-  
-
-  console.log(recognizedCustomers);
 
   return (
     <Container fluid>
