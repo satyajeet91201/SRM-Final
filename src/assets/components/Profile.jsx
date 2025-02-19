@@ -1,58 +1,58 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import CustomerDetails from './CustomerDetails';
-import './Profile.css';
 import { useNavigate } from 'react-router-dom';
 import { IoChevronBackCircleSharp } from "react-icons/io5";
-
+import './Profile.css';
 
 const Profile = ({ onClose }) => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Debugging log to check if location.state is available
-  console.log('Location state:', location.state);
-
   const customer = location.state?.customer;
 
-  // Debugging log to check if customer data is accessible
-  console.log('Customer:', customer);
-  console.log(FormData);
-  console.log(customer.image);
-
- 
-
-  const [view, setView] = useState('main');
-  const [orders, setOrders] = useState(customer?.orders || []);
-  const [newOrder, setNewOrder] = useState('');
-  const { specialOccasion, specialAssistance } = customer;
   const [favoriteDishImages, setFavoriteDishImages] = useState([]);
-
+  
   useEffect(() => {
+    const controller = new AbortController(); // Declare controller here
+    const signal = controller.signal;
     const fetchDishImages = async () => {
       const dishImages = [];
+      
+
       for (const dish of customer.favoriteDishes) {
         try {
-          const response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${dish}`);
+          const response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${dish}`, { signal });
           const data = await response.json();
           if (data.meals && data.meals[0]) {
             dishImages.push(data.meals[0].strMealThumb); // Add the image URL of the dish
+          } else {
+            dishImages.push(null); // Handle case where no image is found
           }
         } catch (error) {
           console.error('Error fetching dish image:', error);
         }
       }
-      setFavoriteDishImages(dishImages);
+
+      setFavoriteDishImages(dishImages); // Update state with fetched images
     };
 
     if (customer.favoriteDishes && customer.favoriteDishes.length > 0) {
       fetchDishImages();
     }
-  }, [customer.favoriteDishes]);
 
-  const handleBackClick = (customer) => {
+    return () => {
+
+      console.log("Cleaning useEffect...");
+      console.log(favoriteDishImages);
+      controller.abort(); // Abort ongoing fetch requests on component unmount
+      console.log(favoriteDishImages);
+    };
+  }, [customer.favoriteDishes]); // Re-run effect if favoriteDishes change
+
+  const handleBackClick = () => {
     navigate('/');
   };
+
 
 
   return (
@@ -78,15 +78,20 @@ const Profile = ({ onClose }) => {
                       ></span><div style={{fontSize:"18px"}}>{customer.vegOrNonVeg}</div>
                         </div>
                     </div>
-                    <div className="special-days">
-                        <h3 className='section-title'>Special Days</h3>
-                        <div className="special-day">
-                            <span>🎂</span> <span>{customer.specialOccasionDate}</span>
-                        </div>
-                        <div className="special-day">
-                            <span>💑</span> <span>{customer.anniversaryDate}</span>
-                        </div>
-                    </div>
+            <div className="special-days">
+                   <h3 className="section-title">Special Days</h3>
+                  {customer.specialOccasion && customer.specialOccasion.length > 0 ? (
+                    customer.specialOccasion.map((occasion, index) => (
+                    <div className="special-day" key={index}>
+                      <span>{occasion.type === "Birthday" ? "🎂" : "💑"}</span>
+                      <span>{occasion.date}</span>
+            </div>
+        ))
+    ) : (
+        <p>No special occasions recorded.</p>
+    )}
+</div>
+
                 </div>
             </section>
 
