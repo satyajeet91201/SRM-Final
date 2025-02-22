@@ -1,31 +1,54 @@
-import React, { useState } from 'react';
-import { Alert } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
-import './authentication.css';
+import React, { useState } from "react";
+import { Alert } from "react-bootstrap";
+import { useNavigate, NavLink } from "react-router-dom";
 
 function Login({ setIsAuthenticated }) {
-    const [emaillog, setEmaillog] = useState('');
-    const [passwordlog, setPasswordlog] = useState('');
+    const [emaillog, setEmaillog] = useState("");
+    const [passwordlog, setPasswordlog] = useState("");
     const [flag, setFlag] = useState(false);
     const navigate = useNavigate();
 
-    const handleLogin = (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
-        const storedEmail = localStorage.getItem('userEmail')?.replace(/"/g, '');
-        const storedPassword = localStorage.getItem('userPassword')?.replace(/"/g, '');
 
-        if (!emaillog || !passwordlog || emaillog !== storedEmail || passwordlog !== storedPassword) {
-            setFlag(true);
-        } else {
+        try {
+            const response = await fetch("http://localhost:3000/users");
+            const users = await response.json();
+            const foundUser = users.find(user => user.email === emaillog && user.password === passwordlog);
+
+            if (!foundUser) {
+                setFlag(true);
+                return;
+            }
+
+            // Remove all previously logged-in users
+            await fetch("http://localhost:3000/loggedInUser", {
+                method: "DELETE",
+            });
+
+            // Add only the new logged-in user
+            await fetch("http://localhost:3000/loggedInUser", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    id: foundUser.id,
+                    email: foundUser.email,
+                    name: foundUser.name,
+                }),
+            });
+
             setIsAuthenticated(true);
-            localStorage.setItem('isAuthenticated', 'true');
-            navigate('/'); // Redirect to Homescreen
+            navigate("/");
+        } catch (error) {
+            console.error("Login error:", error);
         }
     };
 
     return (
         <div className="auth-wrapper">
-            <div className="auth-inner" style={{marginTop:"-20px"}}>
+            <div className="auth-inner" style={{ marginTop: "-20px" }}>
                 <h3>Login</h3>
                 <form onSubmit={handleLogin}>
                     <div className="form-group">
@@ -52,12 +75,12 @@ function Login({ setIsAuthenticated }) {
                         Login
                     </button>
                     {flag && (
-                        <Alert variant="danger">
+                        <Alert variant="danger" style={{marginTop:"5px"}}>
                             Incorrect email or password.
                         </Alert>
                     )}
                     <p className="forgot-password text-right">
-                        Don't have an account? <a href="/register">Sign up</a>
+                        Don't have an account? <NavLink to="/register">Sign up</NavLink>
                     </p>
                 </form>
             </div>
