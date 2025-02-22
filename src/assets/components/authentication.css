@@ -1,25 +1,28 @@
 .auth-container {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #232526 0%, #414345 100%);
+    padding: 20px;
 }
 
 .auth-container form {
-    background-color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
     padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     max-width: 400px;
     width: 100%;
+    animation: fadeIn 0.5s ease-in-out;
 }
 
 .auth-container h3 {
     text-align: center;
     font-weight: 700;
     margin-bottom: 30px;
-    color: #333;
+    color: #fff;
 }
 
 .auth-container .form-group {
@@ -28,41 +31,53 @@
 
 .auth-container .form-group label {
     font-weight: bold;
-    color: #333;
+    color: #ddd;
 }
 
 .auth-container .form-control {
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    padding: 12px;
     font-size: 16px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+.auth-container .form-control::placeholder {
+    color: #ccc;
 }
 
 .auth-container .btn {
-    background-color: #16171a;
+    background: linear-gradient(90deg, #ff7eb3 0%, #ff758c 100%);
     border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
+    padding: 12px;
+    border-radius: 8px;
     font-size: 18px;
     font-weight: bold;
     color: white;
     width: 100%;
-    transition: background-color 0.3s;
+    transition: transform 0.3s ease, background 0.3s ease;
 }
 
 .auth-container .btn:hover {
-    background-color: #764ba2;
+    background: linear-gradient(90deg, #ff758c 0%, #ff7eb3 100%);
+    transform: scale(1.05);
 }
 
 .auth-container .forgot-password {
     margin-top: 10px;
     text-align: center;
-    color: #666;
+    color: #bbb;
 }
 
 .auth-container .forgot-password a {
-    color: #764ba2;
+    color: #ff7eb3;
     text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.auth-container .forgot-password a:hover {
+    color: #ff758c;
 }
 
 .auth-wrapper {
@@ -70,23 +85,26 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #232526 0%, #414345 100%);
+    padding: 20px;
 }
 
 .auth-inner {
-    background-color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
     padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     max-width: 400px;
     width: 100%;
+    animation: fadeIn 0.5s ease-in-out;
 }
 
 .auth-inner h3 {
     text-align: center;
     font-weight: 700;
     margin-bottom: 30px;
-    color: #333;
+    color: #fff;
 }
 
 .auth-inner .form-group {
@@ -95,39 +113,87 @@
 
 .auth-inner .form-group label {
     font-weight: bold;
-    color: #333;
+    color: #ddd;
 }
 
 .auth-inner .form-control {
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    padding: 12px;
     font-size: 16px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+.auth-inner .form-control::placeholder {
+    color: #ccc;
 }
 
 .auth-inner .btn {
-    background-color: #667eea;
+    background: linear-gradient(90deg, #ff7eb3 0%, #ff758c 100%);
     border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
+    padding: 12px;
+    border-radius: 8px;
     font-size: 18px;
     font-weight: bold;
     color: white;
     width: 100%;
-    transition: background-color 0.3s;
+    transition: transform 0.3s ease, background 0.3s ease;
 }
 
 .auth-inner .btn:hover {
-    background-color: #764ba2;
+    background: linear-gradient(90deg, #ff758c 0%, #ff7eb3 100%);
+    transform: scale(1.05);
 }
 
 .auth-inner .forgot-password {
     margin-top: 10px;
     text-align: center;
-    color: #666;
+    color: #bbb;
 }
 
 .auth-inner .forgot-password a {
-    color: #764ba2;
+    color: #ff7eb3;
     text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.auth-inner .forgot-password a:hover {
+    color: #ff758c;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .auth-container,
+    .auth-wrapper {
+        padding: 10px;
+    }
+
+    .auth-container form,
+    .auth-inner {
+        padding: 25px;
+    }
+
+    .auth-container h3,
+    .auth-inner h3 {
+        font-size: 20px;
+    }
+
+    .auth-container .btn,
+    .auth-inner .btn {
+        font-size: 16px;
+        padding: 10px;
+    }
 }
